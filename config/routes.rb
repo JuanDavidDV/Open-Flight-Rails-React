@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     end
   end
 
-  get "*path", to: "pages#index", via: :all # Redirect innexisitng URL to index route
+  get "*path", to: "pages#index", via: :all # Redirect innexisitng URLs to index route. Useful when handling with React Router components without interfering with Rails routes
 end
