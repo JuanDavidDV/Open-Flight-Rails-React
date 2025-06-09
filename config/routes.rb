@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       resources :reviews, only: [ :create, :destroy ]
     end
   end
+
+  get "*path", to: "pages#index", via: :all # Redirect innexisitng URL to index route
 end
