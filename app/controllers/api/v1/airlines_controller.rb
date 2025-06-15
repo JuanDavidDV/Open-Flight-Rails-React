@@ -19,7 +19,7 @@ module Api
         if @airline.save
           render json: AirlineSerializer.new(@airline).serialized_json
         else
-          render json: { error: airline.errors.messages }, status: 400
+          render json: { error: airline.errors.messages }, status: 404
         end
       end
 
