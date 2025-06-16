@@ -19,7 +19,7 @@ module Api
         if @airline.save
           render json: AirlineSerializer.new(@airline).serialized_json
         else
-          render json: { error: airline.errors.messages }, status: 404
+          render json: { error: @airline.errors.messages }, status: 404
         end
       end
 
@@ -29,7 +29,17 @@ module Api
         if @airline.update(airline_params)
           render json: AirlineSerializer.new(@airline).serialized_json
         else
-          render json: { error: airline.errors.messages }, statsu: 404
+          render json: { error: @airline.errors.messages }, statsu: 404
+        end
+      end
+
+      def destroy
+        @airline = Airline.find_by(slug: params[:slug])
+
+        if @airline.destroy!
+          head :no_content
+        else
+          render json: { error: @airline.errors.messages }, status: 404
         end
       end
 
