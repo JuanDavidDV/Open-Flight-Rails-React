@@ -20,6 +20,7 @@ module Api
           render json: { error: review.errors.messages }, status: 404
         end
       end
+
       private
 
       def review_params
