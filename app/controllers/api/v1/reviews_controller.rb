@@ -3,6 +3,12 @@ module Api
     class ReviewsController < ApplicationController
       def create
         @review = Review.new(review_params)
+
+        if review.save
+          render json: ReviewSerializer.new(@review).serialized_json
+        else
+          render json: { error: review.errors.messages }, status: 404
+        end
       end
       private
 
